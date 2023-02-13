@@ -7,7 +7,7 @@
                     <img class="logo" src="../../assets/logo.png" alt="">
                     <h1 class="title">后台管理系统</h1>
                 </div>
-                <el-button type="danger">退出</el-button>
+                <el-button type="danger" @click="loginOut">退出</el-button>
 
             </el-header>
 
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import router from '@/router'
+import store from '@/store'
 import { reactive, toRefs } from 'vue'
 export default {
     setup() {
@@ -62,8 +64,17 @@ export default {
             name: 'zs'
         })
 
+        const loginOut = ()=>{
+            localStorage.removeItem('userInfo')
+            store.commit('uInfo/setUserInfo',{})
+            router.push({
+                path:'/login'
+            })
+        }
+
         return {
-            ...toRefs(data)
+            ...toRefs(data),
+            loginOut
         }
     }
 }
