@@ -39,10 +39,10 @@ export default {
             //登录接口
             console.log(router === router1)
             loginApi(data.loginForm).then(res => {
-                console.log("等苦返回", res)
+                console.log("等苦返回", res.data)
                 if (res.data) {
-                    store.commit('uInfo/setUserInfo',data.loginForm)//提交一次setUserInfo，从localstorage取一次信息
-                    localStorage.setItem('userInfo',JSON.stringify(data.loginForm))
+                    store.commit('uInfo/setUserInfo',res.data)//提交一次setUserInfo，从localstorage取一次信息
+                    localStorage.setItem('userInfo',JSON.stringify(res.data))
                     console.log(data.loginForm)
                     router.push({
                         path:'/'

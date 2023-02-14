@@ -1,13 +1,15 @@
 import axios from 'axios'
 import { ElLoading } from 'element-plus'
 import { ElMessage } from 'element-plus'
+import store from "../store/index.js"
 
 let loadingObj = null
 const Service = axios.create({
     timeout: 5000,
     baseURL: 'http://127.0.0.1:8888/api/private/v1/',
     headers: {
-        "Content-Type": "application/json;charset=utf-8"
+        "Content-Type": "application/json;charset=utf-8",
+        "Authorization": store.state.uInfo.uInfo.token
     }
 })
 //请求拦截，统一处理，增加loading
@@ -29,7 +31,7 @@ Service.interceptors.response.use(response => {
         //     message: response.data.meta.msg||"网络错误",
         //     type: 'error',
         // })
-        ElMessage.error(response.data.meta.msg||"网络错误")
+        ElMessage.error(response.data.meta.msg || "网络错误")
         return response.data
     }
     return response.data
@@ -54,7 +56,7 @@ export const myget = config => {
     return Service({
         ...config,
         method: 'get',
-        data: config.data
+        params: config.data
     })
 }
 
