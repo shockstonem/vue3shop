@@ -41,7 +41,7 @@ export default {
             loginApi(data.loginForm).then(res => {
                 console.log("等苦返回", res)
                 if (res.data) {
-                    store.commit('uInfo/setUserInfo',data.loginForm)
+                    store.commit('uInfo/setUserInfo',data.loginForm)//提交一次setUserInfo，从localstorage取一次信息
                     localStorage.setItem('userInfo',JSON.stringify(data.loginForm))
                     console.log(data.loginForm)
                     router.push({

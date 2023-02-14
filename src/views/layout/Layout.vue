@@ -1,17 +1,16 @@
 <template>
     <div class="common-layout">
         <el-container>
+
             <el-header class="flex-float">
                 <div class="flex" @click="toIndex">
                     <img class="logo" src="../../assets/logo.png" alt="">
                     <h1 class="title">后台管理系统</h1>
                 </div>
                 <el-button type="danger" @click="loginOut">退出</el-button>
-
             </el-header>
 
             <el-container>
-
                 <el-aside width="200px">
                     <el-menu :router="true" background-color="none" text-color="#fff">
                         <el-sub-menu index="1">
@@ -44,7 +43,7 @@
                     </el-menu>
                 </el-aside>
 
-                <el-main>Main
+                <el-main>
                     <router-view></router-view>
                 </el-main>
 

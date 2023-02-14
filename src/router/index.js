@@ -47,6 +47,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const uInfo = store.state.uInfo.uInfo
+  console.log('uinfo',store.state.uInfo)
   if (uInfo.username) {
     next()
   } else {

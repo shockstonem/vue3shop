@@ -5,6 +5,7 @@ export default {
     },
     mutations: {
         setUserInfo(state, uInfo) {
+            console.log('setUserInfo',uInfo)
             state.uInfo = uInfo
         }
     }
