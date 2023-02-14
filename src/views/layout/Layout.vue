@@ -1,9 +1,8 @@
 <template>
     <div class="common-layout">
         <el-container>
-
             <el-header class="flex-float">
-                <div class="flex">
+                <div class="flex" @click="toIndex">
                     <img class="logo" src="../../assets/logo.png" alt="">
                     <h1 class="title">后台管理系统</h1>
                 </div>
@@ -72,9 +71,14 @@ export default {
             })
         }
 
+        const toIndex = ()=>{
+            router.push('/')
+        }
+
         return {
             ...toRefs(data),
-            loginOut
+            loginOut,
+            toIndex
         }
     }
 }

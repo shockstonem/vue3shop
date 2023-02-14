@@ -12,8 +12,13 @@ const routes = [
     path: '/',
     name: 'layout',
     component: Layout,
-    redirect: '/user',
+    redirect: '/index',
     children: [
+      {
+        path:'/index',
+        name:'index',
+        component:()=>import('../views/pages/index.vue')
+      },
       {
         path: '/user',
         name: 'user',
@@ -42,7 +47,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const uInfo = store.state.uInfo.uInfo
-  if (uInfo.userName) {
+  if (uInfo.username) {
     next()
   } else {
     if (to.path === '/login') {
